@@ -1,0 +1,120 @@
+
+\section{Descripción del Conjunto de Datos}
+
+El Monóxido de Carbono (CO) es un gas extremadamente tóxico para los seres humanos y animales, y puede causar graves problemas respiratorios y circulatorios si es inhalado en grandes cantidades. Es emitido por automóviles, fábricas, hornos y equipos de calefacción mediante la combustión incompleta de combustibles fósiles. En este contexto, la concentración de CO puede ser un excelente indicador para medir la calidad del aire, la cual puede ser utilizada para evaluar y diagnosticar los riesgos a los que está expuesta una población en una región determinada.
+
+El objetivo de este trabajo es desarrollar modelos de regresión lineal para predecir la concentración de Monóxido de Carbono en el aire. Para ello, se recolectó un conjunto de atributos relacionados con las características del aire, descritos a continuación:
+
+\begin{itemize}
+    \item \textbf{No}: Índice del ejemplo en la base de datos. Es un atributo no predictivo y no debe ser utilizado durante el entrenamiento de los modelos.
+    \item \textbf{Year}: Año en que se realizó la medición.
+    \item \textbf{Month}: Mes en que se realizó la medición.
+    \item \textbf{Day}: Día en que se realizó la medición.
+    \item \textbf{Hour}: Hora en que se realizó la medición.
+    \item \textbf{PM2.5}: Concentración de PM2.5 en el aire (en µg/m³).
+    \item \textbf{PM10}: Concentración de PM10 en el aire (en µg/m³).
+    \item \textbf{SO2}: Concentración de SO2 en el aire (en µg/m³).
+    \item \textbf{NO2}: Concentración de NO2 en el aire (en µg/m³).
+    \item \textbf{O3}: Concentración de O3 en el aire (en µg/m³).
+    \item \textbf{TEMP}: Temperatura en grados Celsius en el momento de la recolección.
+    \item \textbf{PRES}: Presión atmosférica (en hPa) en el momento de la recolección.
+    \item \textbf{DEWP}: Punto de rocío del agua en la región de la recolección.
+    \item \textbf{RAIN}: Precipitación de agua en la región de la recolección (en mm).
+    \item \textbf{WD}: Dirección del viento en el momento de la recolección.
+    \item \textbf{WSPM}: Velocidad del viento.
+    \item \textbf{Target}: Concentración de Monóxido de Carbono (CO) en el aire en µg/m³. Este es el valor objetivo que deben predecir.
+\end{itemize}
+
+\section{Tareas}
+
+Se solicita que:
+
+\begin{enumerate}
+    \item Inspeccionen los datos. ¿Cuántos ejemplos tienen? ¿Cómo tratarán las características discretas, si las hay? ¿Hay ejemplos con características sin anotaciones? ¿Cómo tratarían esos casos?
+    \item Apliquen alguna técnica de normalización para preparar mejor los datos para el entrenamiento (Min-Max, Z-Score, etc.).
+    \item Como línea base, entrenen una regresión lineal utilizando todas las características para predecir la concentración de CO en el aire. Reporten el error en los conjuntos de entrenamiento, validación y prueba.
+    \item Implementen soluciones alternativas basadas en regresión lineal mediante la combinación de características existentes para mejorar el resultado base. Comparen sus soluciones reportando los errores en el conjunto de validación. Tomen solo la mejor solución basada en el conjunto de validación y reporten el error en el conjunto de prueba.
+    \item Implementen soluciones alternativas basadas en regresión lineal aumentando los grados de las características (regresión polinómica) para mejorar el resultado base. Grafiquen el error en los conjuntos de entrenamiento y validación en función del grado del polinomio. Identifiquen las regiones de underfitting, punto óptimo y overfitting. Tomen solo el mejor modelo polinómico basado en el conjunto de validación y reporten su error en el conjunto de prueba.
+    \item Escriban un informe de máximo 5 páginas:
+    \begin{itemize}
+        \item Describan lo que se hizo, así como las diferencias entre su mejor modelo y el modelo base.
+        \item Reporten el error del mejor modelo en el conjunto de prueba. Recuerden que el mejor modelo debe ser elegido con base en el error en el conjunto de validación.
+        \item Incluyan una sección de conclusión explicando las diferencias entre los modelos y por qué dichas diferencias llevaron a resultados mejores o peores.
+    \end{itemize}
+\end{enumerate}
+
+\section{Archivos}
+
+Los archivos disponibles son:
+
+\begin{itemize}
+    \item \texttt{trabajo01\_nombre\_de\_los\_integrantes.ipynb}: Código de apoyo al Trabajo 01. Desarrollen el trabajo a partir de él.
+    \item \texttt{training\_set\_air\_quality}: conjunto de datos para entrenamiento.
+    \item \texttt{validation\_set\_air\_quality}: conjunto de datos para validación.
+    \item \texttt{test\_set\_price\_variation}: conjunto de datos de prueba.
+\end{itemize}
+
+\section{Evaluación}
+
+El conjunto de datos fue previamente dividido aleatoriamente en tres subconjuntos: entrenamiento, validación y prueba.
+
+En el informe, deben reportar todo lo solicitado en la sección Tareas.
+
+La evaluación consistirá en el análisis del informe y del código entregados. Evaluaremos si las tareas fueron realizadas, cómo se realizaron el entrenamiento y validación, los resultados reportados y las conclusiones presentadas.
+
+\textbf{Observaciones sobre la evaluación:}
+
+\section*{Instrucciones y Requisitos de Entrega}
+
+\begin{itemize}
+    \item El trabajo debe realizarse en  grupos de cuatro o cinco personas, pudiendo cambiar los integrantes en cada entrega.
+    \item El código (\texttt{.ipynb}) y el informe (\texttt{.pdf}) deben ser enviados por uno solo de los integrantes del grupo.
+    \item No olviden incluir los nombres de los integrantes del grupo al inicio del informe y del código, junto con el porcentaje de participación de cada miembro.
+    \item El informe debe contener las siguientes secciones:
+    \begin{enumerate}
+       \item \textbf{Introducción:} Presentación del problema, motivación del trabajo y descripción general del enfoque adoptado.
+    
+    \item \textbf{Exploración del Conjunto de Datos:} Análisis de los datos disponibles, tratamiento de valores faltantes, identificación de variables relevantes, normalización y consideraciones sobre atributos discretos o no predictivos.
+    
+    \item \textbf{Metodología:} Descripción de los modelos de regresión implementados (modelo base, combinaciones lineales y modelos polinómicos), técnicas de regularización utilizadas, estrategias de validación y criterios de evaluación aplicados.
+    
+    \item \textbf{Resultados:} 
+    \begin{itemize}
+        \item Comparación del modelo base con los modelos mejorados.
+        \item Justificación técnica de las diferencias de rendimiento observadas.
+        \item Reporte detallado de los errores (entrenamiento, validación y prueba) para el mejor modelo seleccionado con base en el desempeño en el conjunto de validación.
+    \end{itemize}
+    
+    \item \textbf{Conclusiones:} Reflexión crítica sobre los resultados obtenidos, análisis del comportamiento de los modelos frente al overfitting/underfitting, y explicación de cómo y por qué las modificaciones introducidas mejoraron o perjudicaron el rendimiento en comparación con el modelo base.
+    
+    \item \textbf{Declaración de Contribución:} Breve resumen del aporte individual de cada integrante del grupo en las distintas etapas del trabajo.
+
+    \end{enumerate}
+\end{itemize}
+\textit{* Evite usar capturas de pantalla para mostrar resultados como precisión, puntuación de F1, pérdidas o errores. En su lugar, asegúrese de que todos los resultados tengan el formato correcto y se presenten en el documento.} \\
+
+\textit{* El documento debe tener una \textbf{extensión máxima de 5 páginas} y puede incluir cualquier número de apéndices que se consideren apropiados.} \\
+  
+
+
+\newpage
+\subsection{Rúbrica de Evaluación (Total: 20 puntos)}
+
+
+\begin{table}[!hp]
+\begin{tabular}{|>{\raggedright\arraybackslash}p{3cm}|>{\centering\arraybackslash}p{2.5cm}|>{\centering\arraybackslash}p{2.5cm}|>{\centering\arraybackslash}p{2.5cm}|>{\centering\arraybackslash}p{2.5cm}|>{\centering\arraybackslash}p{2.5cm}|}
+\hline
+\textbf{Criterio} & \textbf{Excelente(4)} & \textbf{Bueno(3)} & \textbf{Aceptable(2)} & \textbf{Deficiente(1)} & \textbf{Insuficiente(0)} \\
+\hline
+\textbf{Introducción y Motivación} & Explica claramente el objetivo, relevancia y contexto del problema & Explica el objetivo y motivación con claridad & Mención general del objetivo sin mucha profundidad & Introducción vaga o poco clara & No se presenta la introducción \\
+\hline
+\textbf{Exploración y Preprocesamiento de Datos} & Análisis detallado, manejo adecuado de valores faltantes y normalización & Análisis correcto con pequeños descuidos & Análisis superficial o incompleto & Exploración mínima o incorrecta & No se realiza ningún análisis \\
+\hline
+\textbf{Metodología y Justificación Técnica} & Metodología clara y bien justificada, incluye regularización y validación & Buena descripción con justificación parcial & Método descrito sin suficiente profundidad & Descripción incompleta o errónea & No se presenta la metodología \\
+\hline
+\textbf{Resultados y Análisis Comparativo} & Presentación completa de resultados, comparación clara con el modelo base, errores bien interpretados & Resultados adecuados, comparación razonable & Presenta algunos resultados pero sin comparación sólida & Resultados poco claros o mal interpretados & Sin resultados o análisis \\
+\hline
+\textbf{Conclusión y Contribuciones del Equipo} & Conclusión crítica y bien argumentada; contribuciones claras por integrante & Conclusión lógica con buena identificación de aportes & Conclusión simple o aportes vagos & Conclusión débil o sin contribuciones claras & Sin conclusión ni declaración de aportes \\
+\hline
+\end{tabular}
+\end{table}
