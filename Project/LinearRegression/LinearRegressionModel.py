@@ -1,6 +1,7 @@
 import numpy as np
 
 
+# Regresión lineal usando MSE.
 class LinearRegression:
 
     def __init__(self, lr, umbral, x, y):
