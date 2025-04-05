@@ -1,29 +1,29 @@
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
-
+# Librerías de manejo de datos
 import pandas as pd
+import numpy as np
 
+# Librerías de visualización
+import matplotlib.pyplot as plt
 import seaborn as seabornInstance
+import pylab as pl
 
+# Librerías de aprendizaje automático
+from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.metrics import mean_squared_error, r2_score, confusion_matrix, classification_report, jaccard_score
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
-
-import pylab as pl
-import scipy.optimize as opt
 from sklearn import preprocessing
 
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import jaccard_score
-from sklearn.metrics import classification_report, confusion_matrix
-
-import itertools
+# Técnicas de reducción de dimensionalidad
 from sklearn.decomposition import PCA
-
 from sklearn.manifold import TSNE
+
+# Herramientas de optimización y matemáticas
+import scipy.optimize as opt
+
+# Visualización 3D
 from mpl_toolkits.mplot3d import Axes3D
+
 
 
 def generate_data_set():
@@ -120,6 +120,7 @@ class LinearRegressionUsingGD:
         self.eta = eta
         self.n_iterations = n_iterations
 
+
     def fit(self, x, y):
         """Fit the training data
         Parameters
@@ -140,8 +141,8 @@ class LinearRegressionUsingGD:
         for _ in range(self.n_iterations):
             y_pred = np.dot(x, self.w_)
             residuals = y_pred - y
-            gradient_vector = np.dot(x.T, residuals)
-            self.w_ -= (self.eta / m) * gradient_vector
+            gradient_vector = np.dot(x.T, residuals) / m
+            self.w_ -= self.eta * gradient_vector
             cost = np.sum((residuals ** 2)) / (2 * m)
             self.cost_.append(cost)
         return self
