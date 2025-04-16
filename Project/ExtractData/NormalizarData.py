@@ -7,7 +7,7 @@ import numpy as np
 # mean aprox 0 y std aprox 1
 def StandardNormalization(x_data):
     x_mean = np.mean(x_data)
-    x_std = np.std(x_mean)
+    x_std = np.std(x_data)
 
     return (x_data - x_mean) / x_std
 

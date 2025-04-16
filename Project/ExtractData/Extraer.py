@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from Variables import TypeData, AtributosInteres, TypeNormalization
+from .Variables import TypeData, AtributosInteres, TypeNormalization
 
 
 # Data:
@@ -31,12 +31,13 @@ def ExtractAirQualityData(Data='train', Normalization='Standard'):
         TotalData = np.concatenate([TotalData, AtributoData], axis=1)
 
     np.random.shuffle(TotalData)
+    #TotalData = TotalData[:100000, :]
     NormalizationFunction = TypeNormalization[Normalization]
 
     # Todos los atributos menos el último
     x = NormalizationFunction(TotalData[:, :-1])
 
-    # Solo el último atributo
-    y = TotalData[:, -1]
+    # Solo el último atributo y como vector columna
+    y = NormalizationFunction(TotalData[:, -1]).reshape(-1, 1)
 
     return x, y

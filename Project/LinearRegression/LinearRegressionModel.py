@@ -27,35 +27,53 @@ class LinearRegression:
     def forward(self):
         return np.dot(self.x, self.w)
 
+    def Predict(self, x):
+        return np.dot(x, self.w)
+
     def LossFunction(self, y_pred):
-        return 1 / (2 * self.m) * np.sum((self.y - y_pred) ** 2)
 
-    def GradiantDescent(self, y_pred):
-        return 1 / self.m * np.sum((self.y - y_pred) * self.x)
+        error = np.sum((self.y - y_pred) ** 2)
+        return 1 / (2 * self.m) * error
 
-    def Backward(self, lr, dw):
-        self.w -= lr * dw
+    def GradientDescent(self, y_pred):
+        error = self.y - y_pred
+        return (-1 / self.m) * np.dot(self.x.T, error)
 
-    def fit(self, MaxIters=1e+5, factor=1e+2):
+    def Backward(self, dw):
+        self.w -= self.lr * dw
+
+    def fit(self, MaxIters=1e+4, factor=1e+2, beta=0.9):
 
         CostHistory = []
         cost = 1
         NumIters = 0
+        CostPonderado = 0
 
         while cost > self.umbral and NumIters < MaxIters:
 
             y_pred = self.forward()
             cost = self.LossFunction(y_pred)
-            dw = self.GradiantDescent(y_pred)
-            self.Backward(self.lr, dw)
+            dw = self.GradientDescent(y_pred)
+            self.Backward(dw)
 
+            if NumIters > 1:
+                CostPonderado = beta * CostPonderado + (1-beta) * cost
+            else:
+                CostPonderado = cost
+
+            CostHistory.append(CostPonderado)
             CostHistory.append(cost)
             NumIters += 1
 
             if NumIters % factor == 0:
-                print(f"Iteracion: {NumIters} --> Costo: {cost}")
+                print(f"Iteracion: {NumIters} --> Costo: {cost:.5f}")
 
         return CostHistory
 
     def GetCostHistory(self):
+
+        if not self.CostHistory:
+            print(f"Aún no se ha realizado el entrenamiento, o hubo un error.")
+            return []
+
         return self.CostHistory
